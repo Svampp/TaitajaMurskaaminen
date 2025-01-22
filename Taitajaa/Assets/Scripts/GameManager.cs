@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 
         player.transform.position = playerStartPos;
         PlayerController.instance.ResetHealth();
+        PlayerController.instance.inMarketArea = true;
     }
 
     public void BackToMenu()

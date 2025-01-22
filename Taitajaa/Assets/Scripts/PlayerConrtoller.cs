@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float health = 100;
     float maxHealth = 100f;
     [SerializeField] int coins = 0;
-    [SerializeField] bool inMarketArea = true;
+    public bool inMarketArea = true;
 
     [Header("UI")]
     [SerializeField] TextMeshProUGUI coinsText;
@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
         {
             maxHealth += 10;
             health = maxHealth;
+            coins--;
         }
         
     }
