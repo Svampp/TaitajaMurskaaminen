@@ -44,6 +44,7 @@ public class AudioManager : MonoBehaviour
     public void Start()
     {
         Play("Background"); // Default background audio.
+        Play("Fight");
     }
 
     /// <summary>
