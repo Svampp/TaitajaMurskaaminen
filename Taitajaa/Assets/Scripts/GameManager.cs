@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [SerializeField] GameObject player;
+    [SerializeField] Vector3 playerStartPos;
 
     private void Awake()
     {
         instance = this;
     }
 
-    public void StartGame()
+    void Start()
     {
         SpawnManager.instance.SpawnWalls();
     }
@@ -21,6 +23,9 @@ public class GameManager : MonoBehaviour
     {
         SpawnManager.instance.DestroyWalls();
         SpawnManager.instance.SpawnWalls();
+
+        player.transform.position = playerStartPos;
+        PlayerController.instance.ResetHealth();
     }
 
     public void BackToMenu()

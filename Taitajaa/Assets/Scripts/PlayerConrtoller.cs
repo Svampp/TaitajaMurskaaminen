@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Stats")]
     [SerializeField] float health = 100;
+    float maxHealth = 100f;
+    [SerializeField] int coins = 0;
 
     private void Awake()
     {
@@ -34,16 +36,15 @@ public class PlayerController : MonoBehaviour
 
         if (health <= 0)
         {
-            //ASdfghjklölkjgfdsa
+            GameManager.instance.Restart();
         }
-
-        if (Input.GetKey(KeyCode.F))
+        if (Input.GetKey(KeyCode.R))
         {
-            SpawnManager.instance.SpawnWalls();
+            GameManager.instance.Restart();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKey(KeyCode.Escape))
         {
-            SpawnManager.instance.DestroyWalls();
+            GameManager.instance.BackToMenu();
         }
     }
 
@@ -78,5 +79,14 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage * Time.deltaTime;
+    }
+    public void ResetHealth()
+    {
+        health = maxHealth;
+    }
+
+    public void Increasecoins(int amount)
+    {
+        coins += amount;
     }
 }

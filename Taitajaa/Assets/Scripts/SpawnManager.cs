@@ -9,7 +9,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject WallPrefab;
     [SerializeField] Vector3 startPos;
     Vector3 spawnPos;
-    [SerializeField] int wallAmount = 100;
+    [SerializeField] int wallAmount = 80;
     float wallDistace = 10f;
 
 

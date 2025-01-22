@@ -11,6 +11,7 @@ public class DamageZone : MonoBehaviour
     {
         if (timeOn <= 0)
         {
+            PlayerController.instance.Increasecoins(1);
             gameObject.SetActive(false);
         }
     }
