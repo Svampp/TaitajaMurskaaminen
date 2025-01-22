@@ -30,6 +30,25 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        Movement();
+
+        if (health <= 0)
+        {
+            //ASdfghjklölkjgfdsa
+        }
+
+        if (Input.GetKey(KeyCode.F))
+        {
+            SpawnManager.instance.SpawnWalls();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SpawnManager.instance.DestroyWalls();
+        }
+    }
+
+    void Movement()
+    {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         if (isGrounded && velocity.y < 0)
