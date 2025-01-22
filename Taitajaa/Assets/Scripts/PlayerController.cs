@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerConrtoller : MonoBehaviour
 {
-    public static PlayerController instance;
+    public static PlayerConrtoller instance;
 
     [Header("Movement")]
     public CharacterController controller;
@@ -20,9 +20,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
     bool isGrounded;
     Vector3 velocity;
-
-    [Header("Stats")]
-    [SerializeField] float health = 100;
 
     private void Awake()
     {
@@ -54,10 +51,5 @@ public class PlayerController : MonoBehaviour
         // Applyes gravity to player
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-    }
-
-    public void TakeDamage(float damage)
-    {
-        health -= damage * Time.deltaTime;
     }
 }
