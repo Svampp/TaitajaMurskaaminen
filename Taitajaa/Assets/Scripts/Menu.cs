@@ -5,7 +5,7 @@ public class Menu : MonoBehaviour
 {
     public void GameStart()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("MainScene");
     }
 }
 
