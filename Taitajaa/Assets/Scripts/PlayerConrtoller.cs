@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 
         buyGuide.SetActive(inMarketArea);
 
-        if (inMarketArea && Input.GetKey(KeyCode.E))
+        if (inMarketArea && Input.GetKeyDown(KeyCode.E) && coins > 0)
         {
             maxHealth += 10;
             health = maxHealth;
