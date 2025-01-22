@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +27,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float health = 100;
     float maxHealth = 100f;
     [SerializeField] int coins = 0;
+    [SerializeField] bool inMarketArea = true;
+
+    [Header("UI")]
+    [SerializeField] TextMeshProUGUI coinsText;
+    [SerializeField] GameObject buyGuide;
 
     private void Awake()
     {
@@ -33,6 +40,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Movement();
+        UI();
 
         if (health <= 0)
         {
@@ -46,6 +54,8 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.instance.BackToMenu();
         }
+
+        
     }
 
     void Movement()
@@ -74,6 +84,20 @@ public class PlayerController : MonoBehaviour
         // Applyes gravity to player
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    void UI()
+    {
+        coinsText.text = $"Coins: {coins}";
+
+        buyGuide.SetActive(inMarketArea);
+
+        if (inMarketArea && Input.GetKey(KeyCode.E))
+        {
+            maxHealth += 10;
+            health = maxHealth;
+        }
+        
     }
 
     public void TakeDamage(float damage)
